@@ -3,108 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>Finger‑Abacus · formula‑perfect 6‑number worksheet</title>
+    <title>Finger‑Abacus · bead‑accurate 6‑number worksheet</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
         body {
-            background: #d9eaf5;
+            background: linear-gradient(145deg, #c8e2f2 0%, #ddefff 100%);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: 100vh;
             padding: 20px 12px;
+            animation: bgFade 12s infinite alternate ease-in-out;
+        }
+        @keyframes bgFade {
+            0% { background: #c8e2f2; }
+            100% { background: #b5d9ed; }
         }
         .worksheet-wrapper {
             max-width: 1300px;
             width: 100%;
-            background: white;
-            border-radius: 40px 40px 30px 30px;
-            box-shadow: 0 25px 45px -10px #1a4b6d80;
-            padding: 25px 20px 30px 20px;
-            transition: all 0.2s;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(2px);
+            border-radius: 50px 50px 40px 40px;
+            box-shadow: 0 30px 50px -15px #0e4b6e;
+            padding: 28px 22px 35px;
+            transition: all 0.3s;
+            border: 2px solid #ffffff70;
         }
         @media (max-width: 600px) {
             body { padding: 10px 6px; }
-            .worksheet-wrapper { padding: 18px 12px; border-radius: 30px; }
+            .worksheet-wrapper { padding: 20px 12px; }
         }
         h1 {
-            font-size: clamp(1.8rem, 6vw, 2.6rem);
-            font-weight: 600;
-            color: #0a3a55;
+            font-size: clamp(2rem, 7vw, 2.9rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #063b55, #1f6d9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin: 0 0 5px 0;
-            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px 15px;
+            gap: 12px 20px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
         h1 small {
             font-size: 0.9rem;
-            background: #cbe5f5;
-            color: #024d73;
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-weight: 500;
+            background: #a3d0e9;
+            color: #01446b;
+            padding: 7px 20px;
+            border-radius: 60px;
+            font-weight: 600;
             white-space: nowrap;
+            box-shadow: inset 0 2px 5px #ffffff, 0 3px 5px #00000010;
         }
         .sub {
             color: #195e83;
             margin: 5px 0 25px 0;
-            font-size: clamp(0.95rem, 4vw, 1.2rem);
-            border-left: 6px solid #47b5e0;
-            padding: 8px 18px;
-            background: #e3f2fc;
-            border-radius: 0 40px 40px 0;
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            border-left: 8px solid #fdbb5c;
+            padding: 12px 22px;
+            background: #f4fcff;
+            border-radius: 0 50px 50px 0;
             line-height: 1.5;
-            word-break: break-word;
+            box-shadow: 0 5px 10px #00000010;
+            font-weight: 500;
         }
         .control-panel {
-            background: #d7eaf5;
-            border-radius: 60px;
-            padding: 15px 22px;
+            background: #ffffffd0;
+            backdrop-filter: blur(4px);
+            border-radius: 80px;
+            padding: 16px 28px;
             margin-bottom: 35px;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            gap: 15px 20px;
+            gap: 15px 25px;
+            border: 2px solid white;
+            box-shadow: 0 10px 18px #0e4b6e30;
         }
         .formula-selector {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
         .formula-selector label {
-            font-weight: 700;
-            color: #0b4766;
-            font-size: 1.1rem;
-            background: #ffffffb0;
-            padding: 6px 14px;
-            border-radius: 40px;
+            font-weight: 800;
+            color: #02486b;
+            font-size: 1.2rem;
+            background: #faf3d7;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid #fab536;
         }
         select {
             background: white;
-            border: 2px solid #72b9da;
-            border-radius: 50px;
-            padding: 10px 24px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #043248;
+            border: 2px solid #4aa3cf;
+            border-radius: 60px;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #022d42;
             cursor: pointer;
             outline: none;
-            max-width: 260px;
-            width: 100%;
+            min-width: 220px;
+            transition: 0.2s;
+        }
+        select:hover {
+            border-color: #f5a623;
+            box-shadow: 0 0 0 4px #f5a62330;
         }
         .button-group {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
         button {
@@ -112,171 +131,181 @@
             border: none;
             color: white;
             font-weight: 700;
-            font-size: 1rem;
-            padding: 12px 26px;
-            border-radius: 50px;
+            font-size: 1.1rem;
+            padding: 14px 32px;
+            border-radius: 70px;
             cursor: pointer;
-            box-shadow: 0 8px 16px #165a8340;
-            transition: 0.15s;
-            border: 1px solid #ffffff70;
+            box-shadow: 0 10px 20px #13527a, 0 4px 0 #0e3d5a;
+            transition: all 0.1s ease;
+            border: 1px solid #ffffff90;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            white-space: nowrap;
+            gap: 10px;
+        }
+        button:active {
+            transform: translateY(4px);
+            box-shadow: 0 6px 12px #13527a;
         }
         button:hover {
-            background: #0d537c;
-            transform: scale(1.02);
-            box-shadow: 0 10px 20px #0a3f60;
+            background: #2382bb;
+            box-shadow: 0 12px 24px #0b4668;
         }
         .pdf-btn {
-            background: #2f6d48;
-            box-shadow: 0 8px 16px #1d4b32;
+            background: #2b7a51;
+            box-shadow: 0 10px 20px #1d5538, 0 4px 0 #15482f;
         }
         .pdf-btn:hover {
-            background: #1f543a;
+            background: #379f66;
         }
         .note-box {
-            background: #fef6e3;
-            padding: 12px 22px;
-            border-radius: 50px;
+            background: #fcf2d9;
+            padding: 14px 28px;
+            border-radius: 70px;
             color: #6d4c2b;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 600;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 8px 15px;
+            gap: 10px 20px;
+            border: 2px solid #ffc489;
         }
         .note-box i {
             font-style: normal;
-            background: #f9cf7a;
-            padding: 4px 14px;
-            border-radius: 40px;
+            background: #fad37d;
+            padding: 5px 18px;
+            border-radius: 60px;
+            color: #3a2f1a;
         }
         .worksheet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 22px;
-            margin: 35px 0 20px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0 30px;
         }
         @media (max-width: 500px) {
-            .worksheet-grid {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
+            .worksheet-grid { grid-template-columns: 1fr; }
         }
         .question-card {
             background: white;
-            border: 2px solid #bdddef;
-            border-radius: 32px;
-            padding: 20px 14px 18px 14px;
-            box-shadow: 0 8px 0 #aac2d3, 0 12px 20px -12px #345e7a;
-            transition: 0.1s;
-            display: flex;
-            flex-direction: column;
+            border-radius: 42px;
+            padding: 24px 16px 20px;
+            box-shadow: 0 12px 0 #afc9db, 0 18px 25px -12px #14394e;
+            transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            border: 3px solid #f5fafe;
+            transform: scale(1);
+        }
+        .question-card:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 18px 0 #9fb9cb, 0 25px 30px -10px #0a2c3d;
         }
         .q-num {
             display: inline-block;
-            background: #1e6f9f;
+            background: #ffb347;
+            background: linear-gradient(145deg, #fcaa3a, #ff8c1a);
             color: white;
-            font-weight: 700;
-            width: 34px;
-            height: 34px;
+            font-weight: 800;
+            width: 42px;
+            height: 42px;
             text-align: center;
-            line-height: 34px;
+            line-height: 42px;
             border-radius: 30px;
-            margin-bottom: 14px;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 0 #0f3e5c;
+            margin-bottom: 16px;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 0 #b25300;
+            border: 2px solid #ffe3a5;
         }
         .expression {
-            font-family: 'Courier New', 'Fira Code', monospace;
-            font-size: 1.4rem;
-            font-weight: 600;
-            background: #eff8ff;
-            padding: 15px 10px;
-            border-radius: 28px;
-            line-height: 1.7;
+            font-family: 'Courier New', monospace;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: #ecf7ff;
+            padding: 16px 10px;
+            border-radius: 36px;
+            line-height: 1.8;
             word-break: break-word;
-            color: #023047;
-            border: 2px solid #9fc5e2;
+            color: #013249;
+            border: 3px solid #aacbe4;
             text-align: center;
+            box-shadow: inset 0 -3px 0 #b3cfec;
         }
         .answer-line {
-            margin-top: 18px;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-top: 3px dashed #b3d4e8;
-            padding-top: 14px;
+            border-top: 4px dashed #b3d4e8;
+            padding-top: 18px;
         }
         .answer-label {
             color: #105478;
-            font-weight: 700;
-            font-size: 1.1rem;
-            background: #e2f0f9;
-            padding: 5px 14px;
-            border-radius: 40px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            background: #def0fa;
+            padding: 7px 20px;
+            border-radius: 50px;
+            border: 2px solid #70b5d5;
         }
         .blank {
-            background: #f3faff;
-            width: 80px;
-            height: 42px;
-            border-radius: 40px;
-            border: 3px solid #7fa9c2;
+            background: #fcfcfc;
+            width: 90px;
+            height: 48px;
+            border-radius: 50px;
+            border: 4px solid #5290b5;
             display: inline-block;
+            box-shadow: inset 0 0 10px #c7e2f5;
         }
         .footer {
-            margin-top: 35px;
+            margin-top: 45px;
             text-align: center;
-            color: #23658b;
-            font-size: 1rem;
-            border-top: 2px solid #c2ddee;
-            padding-top: 25px;
+            color: #195e83;
+            font-size: 1.1rem;
+            border-top: 3px solid #b0d0e7;
+            padding-top: 30px;
+            font-weight: 600;
         }
         .finger-hint {
-            background: #d9ecf9;
-            border-radius: 50px;
-            padding: 8px 22px;
-            font-size: 1rem;
+            background: #ddf2fd;
+            border-radius: 60px;
+            padding: 10px 28px;
+            font-size: 1.1rem;
             color: #024d73;
             display: inline-block;
-            margin-top: 10px;
-            font-weight: 500;
+            margin-top: 15px;
+            border: 2px solid #7bb8da;
         }
-        /* print styles for PDF export */
         @media print {
-            body { background: white; padding: 0.2in; }
-            .worksheet-wrapper { box-shadow: none; padding: 0; max-width: 100%; }
+            body { background: white; padding: 0.2in; animation: none; }
+            .worksheet-wrapper { box-shadow: none; backdrop-filter: none; background: white; }
             .control-panel, .button-group, .pdf-btn, .note-box, .footer .finger-hint, details { display: none; }
-            h1 { color: black; }
+            h1 { -webkit-text-fill-color: #022c40; background: none; text-shadow: none; }
             .sub { background: none; border-left-color: #333; }
-            .worksheet-grid { gap: 0.2in; margin: 0.3in 0; }
-            .question-card { box-shadow: none; border: 1px solid #aaa; break-inside: avoid; }
-            .blank { border: 2px solid #333; background: white; }
+            .question-card { box-shadow: none; border: 2px solid #ccc; break-inside: avoid; }
+            .blank { border: 3px solid #333; background: white; }
         }
         details {
             background: #e5f0f7;
-            border-radius: 28px;
-            padding: 18px 22px;
+            border-radius: 40px;
+            padding: 20px 30px;
             color: #0b3954;
-            margin-top: 25px;
+            margin-top: 35px;
+            border: 2px solid #ffffff;
         }
         summary {
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-weight: 800;
+            font-size: 1.3rem;
             cursor: pointer;
+            color: #01446b;
         }
     </style>
 </head>
 <body>
 <div class="worksheet-wrapper" id="worksheetPrint">
     <h1>
-        🖐️ Finger‑Abacus • formula‑locked
-        <small>tens + ones formulas</small>
+        🖐️ Abacus • formula‑perfect
+        <small>bead simulation</small>
     </h1>
-    <div class="sub">Left hand = tens · Right hand = ones · abacus rods · +10 = +50−40 (tens hand)</div>
+    <div class="sub">Left hand (tens) · Right hand (ones) · +10 = +50−40 · each step uses only selected formula</div>
 
     <div class="control-panel">
         <div class="formula-selector">
@@ -308,28 +337,28 @@
     </div>
 
     <div class="note-box">
-        <i>✨ every step uses only the selected formula (or direct)</i> 
-        <span>✔️ 0–99 · 6 numbers · tens‑hand small friends (10/20/30/40)</span>
+        <i>✨ 0–99 · 6 numbers</i> 
+        <span>✔️ bead‑accurate · every non‑direct move matches formula</span>
     </div>
 
     <!-- 25 questions grid -->
     <div id="worksheet" class="worksheet-grid">
-        <!-- javascript fills -->
+        <!-- js fills -->
     </div>
 
     <div class="footer">
-        ⚡ left hand (tens) · right hand (ones) · abacus rod calculation<br>
+        ⚡ left hand (tens) · right hand (ones) · abacus rods · +10 = +50−40<br>
         <span class="finger-hint">📘 poster · level‑1 book · teacher training</span>
     </div>
 
     <details>
-        <summary>📘 how formula‑perfect generation works</summary>
+        <summary>📘 how bead‑accurate generation works</summary>
         <ul style="margin-top:15px; line-height:1.7; padding-left:20px;">
-            <li>Each of the 25 problems contains 6 numbers (10‑99) with random +/‑ .</li>
-            <li>The generator simulates every step on the abacus (ones and tens columns) and detects which small/big friend formula would be needed.</li>
-            <li>If you select a specific formula (e.g. +1), every non‑direct move in the whole problem must be exactly that formula (both hands). Direct moves are allowed.</li>
-            <li>For “no formula”, every step must be doable without any complement (direct beads only).</li>
-            <li>All intermediate results stay between 0 and 99. The generator loops until 25 valid problems are found.</li>
+            <li>Each rod (tens/ones) has upper=5, lower=1..4. Real bead transitions are simulated.</li>
+            <li>Small friend: used when adding 1‑4 with insufficient lower beads (upper free).</li>
+            <li>Big friend: adding 6‑9 with carry, or subtracting 6‑9 with borrow.</li>
+            <li>Direct moves allowed in any problem. At least one step uses selected formula (if any).</li>
+            <li>Problems are built step‑by‑step, rejecting any invalid transition.</li>
         </ul>
     </details>
 </div>
@@ -337,180 +366,176 @@
 <script>
 (function() {
     // --------------------------------------------------------------
-    //  formula detection logic (returns array of formula strings used in one step)
-    //  returns null if step would go out of bounds (0-99)
+    //  pure abacus bead simulation – ones rod
     // --------------------------------------------------------------
-    function getFormulasForStep(current, num, op) {
+    function addOnes(current, delta) {
+        // current 0-9, delta 0-9
+        if (delta === 0) return { newVal: current, carry: 0, formula: null };
+        let upper = current >= 5 ? 1 : 0;
+        let lower = current - upper * 5;
+        if (delta === 5) {
+            if (upper === 0) {
+                // direct: raise upper
+                return { newVal: 5 + lower, carry: 0, formula: null };
+            } else {
+                // upper already 1 → would overflow (needs big friend for 5? not defined)
+                return null;
+            }
+        }
+        if (delta >= 1 && delta <= 4) {
+            if (lower + delta <= 4) {
+                // direct addition on lower beads
+                return { newVal: upper * 5 + (lower + delta), carry: 0, formula: null };
+            } else if (upper === 0) {
+                // small friend: add 5, subtract complement
+                return { newVal: 5 + (lower + delta - 5), carry: 0, formula: '+' + delta };
+            } else { // upper === 1
+                // would cause carry and require subtract (10-delta) – not a standard small/big friend for delta<6 → reject
+                return null;
+            }
+        }
+        if (delta >= 6 && delta <= 9) {
+            let complement = 10 - delta; // 1..4
+            // big friend addition: need to subtract complement from current without borrow
+            let sub = subtractOnes(current, complement);
+            if (!sub) return null;
+            if (sub.borrow !== 0) return null; // borrow would mean extra borrow, invalid
+            // formula is big friend '+delta'
+            return { newVal: sub.newVal, carry: 1, formula: '+' + delta };
+        }
+        return null;
+    }
+
+    function subtractOnes(current, delta) {
+        if (delta === 0) return { newVal: current, borrow: 0, formula: null };
+        let upper = current >= 5 ? 1 : 0;
+        let lower = current - upper * 5;
+        if (delta === 5) {
+            if (upper === 1) {
+                // direct: lower upper
+                return { newVal: lower, borrow: 0, formula: null };
+            } else {
+                // need to borrow – would be big friend for 5? not defined
+                return null;
+            }
+        }
+        if (delta >= 1 && delta <= 4) {
+            if (lower >= delta) {
+                // direct subtract from lower
+                return { newVal: upper * 5 + (lower - delta), borrow: 0, formula: null };
+            } else if (upper === 1) {
+                // small friend subtraction: use upper, add complement to lower
+                return { newVal: (lower + (5 - delta)), borrow: 0, formula: '-' + delta };
+            } else { // upper==0, lower<delta → need borrow, would be big friend for delta 1-4? not in list
+                return null;
+            }
+        }
+        if (delta >= 6 && delta <= 9) {
+            let complement = 10 - delta; // 1..4
+            // big friend subtraction: borrow, then add complement
+            let add = addOnes(current, complement);
+            if (!add) return null;
+            if (add.carry !== 0) return null; // adding complement must not carry again
+            return { newVal: add.newVal, borrow: 1, formula: '-' + delta };
+        }
+        return null;
+    }
+
+    // --------------------------------------------------------------
+    //  full two‑digit step simulator
+    // --------------------------------------------------------------
+    function simulateStep(current, num, op) {
         let CT = Math.floor(current / 10);
         let CO = current % 10;
         let NT = Math.floor(num / 10);
         let NO = num % 10;
-
         let formulas = [];
 
         if (op === '+') {
-            // ----- ones column -----
-            let onesSum = CO + NO;
-            let onesCarry = 0;
-            if (onesSum >= 10) {
-                onesCarry = 1;
-                // ones result = onesSum - 10
-                // big friend for NO (only if NO between 6 and 9, else invalid because would need non‑standard formula)
-                if (NO >= 6 && NO <= 9) {
-                    formulas.push('+' + NO);   // e.g. +6, +7, +8, +9
-                } else {
-                    return null; // unsupported carry (e.g. 5+5) -> reject
-                }
-            } else {
-                // no carry: check small friend for ones
-                if (CO < 5 && NO > (4 - CO)) {
-                    // need small friend for NO (NO 1-4)
-                    if (NO >= 1 && NO <= 4) {
-                        formulas.push('+' + NO);
-                    } else {
-                        return null; // should not happen
-                    }
-                }
-            }
+            // ones
+            let ones = addOnes(CO, NO);
+            if (!ones) return null;
+            if (ones.formula) formulas.push(ones.formula);
+            let newCO = ones.newVal;
+            let carry = ones.carry;
 
-            // ----- tens column (with possible carry) -----
-            let tensSum = CT + NT + onesCarry;
-            if (tensSum >= 10) {
-                return null; // result would be >=100 -> invalid
-            } else {
-                // check small friend for tens (only if CT < 5 and adding NT causes need)
-                if (CT < 5 && NT > (4 - CT)) {
-                    // tens small friend: +10, +20, +30, +40
-                    let tensFormula = '+' + (NT * 10);
-                    formulas.push(tensFormula);
-                }
-                // if CT >=5, tens addition is always direct as long as no carry (already checked)
-            }
-        } else { // subtraction
-            // ----- ones column -----
-            let onesBorrow = 0;
-            let onesResult;
-            if (CO < NO) {
-                onesBorrow = 1;
-                onesResult = CO + 10 - NO;
-                // big friend subtraction for NO (6-9 only)
-                if (NO >= 6 && NO <= 9) {
-                    formulas.push('-' + NO);
-                } else {
-                    return null; // unsupported borrow (e.g. 3-5 would need borrow but NO not 6-9)
-                }
-            } else {
-                onesResult = CO - NO;
-                // small friend subtraction for ones?
-                if (CO < 5) {
-                    // direct if NO <= CO, otherwise would have borrowed. Here CO>=NO so direct.
-                    // no formula
-                } else { // CO >=5
-                    let lower = CO - 5;
-                    if (NO > lower) {
-                        // need small friend subtraction for NO (1-4)
-                        if (NO >= 1 && NO <= 4) {
-                            formulas.push('-' + NO);
-                        } else {
-                            return null;
-                        }
-                    }
-                }
-            }
+            // tens (include carry)
+            let tens = addOnes(CT, NT + carry);
+            if (!tens) return null;
+            if (tens.carry !== 0) return null; // would exceed 99
+            if (tens.formula) formulas.push(tens.formula);
+            let newCT = tens.newVal;
+            let newValue = newCT * 10 + newCO;
+            if (newValue < 0 || newValue > 99) return null;
+            return { newValue, formulas };
+        } else {
+            // subtraction
+            let ones = subtractOnes(CO, NO);
+            if (!ones) return null;
+            if (ones.formula) formulas.push(ones.formula);
+            let newCO = ones.newVal;
+            let borrow = ones.borrow;
 
-            // ----- tens column with borrow -----
-            let tensResult = CT - NT - onesBorrow;
-            if (tensResult < 0) {
-                return null; // below 0
-            }
-            // check small friend for tens subtraction
-            if (CT < 5) {
-                // direct if NT <= CT, but we already have tensResult>=0 so CT >= NT+onesBorrow
-                // so NT <= CT, direct
-            } else { // CT >=5
-                let lowerTens = CT - 5;
-                if (NT > lowerTens) {
-                    // need small friend subtraction for tens (10,20,30,40)
-                    let tensFormula = '-' + (NT * 10);
-                    formulas.push(tensFormula);
-                }
-            }
+            let tens = subtractOnes(CT, NT + borrow);
+            if (!tens) return null;
+            if (tens.borrow !== 0) return null; // below 0
+            if (tens.formula) formulas.push(tens.formula);
+            let newCT = tens.newVal;
+            let newValue = newCT * 10 + newCO;
+            if (newValue < 0 || newValue > 99) return null;
+            return { newValue, formulas };
         }
-
-        return formulas;
     }
 
     // --------------------------------------------------------------
-    //  generate a random two-digit number (10-99)
+    //  build one problem (6 numbers) that matches selected formula
     // --------------------------------------------------------------
-    function randomTwoDigit() {
-        return Math.floor(Math.random() * 90) + 10;
-    }
-
-    // --------------------------------------------------------------
-    //  generate ONE valid problem (6 numbers, ops) that matches the selected formula
-    //  returns { numbers, ops } or null if fails after attempts
-    // --------------------------------------------------------------
-    function generateValidProblem(selectedFormula, maxAttempts = 3000) {
+    function buildProblem(selectedFormula, maxAttempts = 3000) {
         for (let attempt = 0; attempt < maxAttempts; attempt++) {
             let numbers = [];
             let ops = [];
-            let first = randomTwoDigit();
-            let current = first;
-            numbers.push(first);
+            let current = Math.floor(Math.random() * 90) + 10; // 10-99
+            numbers.push(current);
+            let usedFormulaInProblem = false;
             let valid = true;
-            let allStepFormulas = new Set(); // to collect formulas used in this problem
 
-            for (let i = 1; i < 6; i++) {
+            for (let step = 1; step < 6; step++) {
                 let op = Math.random() < 0.5 ? '+' : '-';
-                let num = randomTwoDigit();
-                let nextVal = op === '+' ? current + num : current - num;
-                if (nextVal < 0 || nextVal > 99) {
+                let num = Math.floor(Math.random() * 90) + 10;
+                let sim = simulateStep(current, num, op);
+                if (!sim) {
                     valid = false;
                     break;
                 }
-                // check formulas for this step
-                let formulas = getFormulasForStep(current, num, op);
-                if (formulas === null) {
-                    valid = false;
-                    break;
-                }
-                // for "none", we require formulas array empty
+                // check formula constraints
+                let stepFormulas = sim.formulas; // array of strings like '+1', '-6'
                 if (selectedFormula === 'none') {
-                    if (formulas.length > 0) {
+                    if (stepFormulas.length > 0) {
                         valid = false;
                         break;
                     }
                 } else {
-                    // for a specific formula, every formula in this step must be either direct (empty) or exactly the selected one
-                    for (let f of formulas) {
+                    // every formula in this step must equal selectedFormula, or be direct (empty)
+                    for (let f of stepFormulas) {
                         if (f !== selectedFormula) {
                             valid = false;
                             break;
                         }
                     }
                     if (!valid) break;
-                    // add to set for later check (optional, but we don't need to ensure at least one? user may want at least one use)
-                    formulas.forEach(f => allStepFormulas.add(f));
+                    if (stepFormulas.length > 0) usedFormulaInProblem = true;
                 }
-
-                // step passed
-                current = nextVal;
+                // accept step
+                current = sim.newValue;
                 numbers.push(num);
                 ops.push(op);
             }
-
             if (valid) {
-                // For a specific formula, we might want at least one occurrence? optional, but we'll keep as is.
-                // If selectedFormula is not 'none' and allStepFormulas is empty (all direct), that would be a problem with only direct steps.
-                // The user likely expects at least one use of the formula. We'll enforce that.
-                if (selectedFormula !== 'none' && allStepFormulas.size === 0) {
-                    continue; // no formula used, reject
-                }
+                if (selectedFormula !== 'none' && !usedFormulaInProblem) continue; // need at least one formula use
                 return { numbers, ops };
             }
         }
-        return null; // failed
+        return null; // fallback (should rarely happen)
     }
 
     // --------------------------------------------------------------
@@ -524,27 +549,24 @@
 
         let problems = [];
         let attempts = 0;
-        const maxTotalAttempts = 10000; // avoid infinite loop
+        const maxTotalAttempts = 10000;
 
         while (problems.length < 25 && attempts < maxTotalAttempts) {
-            const prob = generateValidProblem(selectedFormula);
+            const prob = buildProblem(selectedFormula);
             if (prob) {
                 problems.push(prob);
             }
             attempts++;
         }
 
-        if (problems.length < 25) {
-            // fallback: generate simple default problems (should not happen)
-            for (let i = problems.length; i < 25; i++) {
-                problems.push({
-                    numbers: [45, 12, 23, 34, 11, 22],
-                    ops: ['+', '-', '+', '-', '+']
-                });
-            }
+        // if still not enough, fill with safe defaults (very unlikely)
+        while (problems.length < 25) {
+            problems.push({
+                numbers: [45, 12, 23, 34, 11, 22],
+                ops: ['+', '-', '+', '-', '+']
+            });
         }
 
-        // render each problem
         problems.forEach((prob, idx) => {
             const q = idx + 1;
             const { numbers, ops } = prob;
@@ -575,24 +597,17 @@
         });
     }
 
-    // initial render
+    // initial load
     renderWorksheet();
 
-    // regenerate on button click
     document.getElementById('generateBtn').addEventListener('click', function() {
         renderWorksheet();
     });
 
-    // PDF export
     document.getElementById('exportPdfBtn').addEventListener('click', function() {
         window.print();
-    });
-
-    // optional: change event just for visual feedback
-    document.getElementById('formulaSelect').addEventListener('change', function(e) {
-        // no need to regenerate automatically, user can click generate
     });
 })();
 </script>
 </body>
-  </html>
+</html>
