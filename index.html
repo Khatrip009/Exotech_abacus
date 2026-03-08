@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>Finger‑Abacus · bead‑accurate 6‑number worksheet</title>
+    <title>Finger‑Abacus · vertical sums · bead‑accurate</title>
     <style>
         * {
             margin: 0;
@@ -201,7 +201,6 @@
         }
         .q-num {
             display: inline-block;
-            background: #ffb347;
             background: linear-gradient(145deg, #fcaa3a, #ff8c1a);
             color: white;
             font-weight: 800;
@@ -216,18 +215,48 @@
             border: 2px solid #ffe3a5;
         }
         .expression {
-            font-family: 'Courier New', monospace;
-            font-size: 1.6rem;
-            font-weight: 700;
             background: #ecf7ff;
-            padding: 16px 10px;
             border-radius: 36px;
-            line-height: 1.8;
-            word-break: break-word;
-            color: #013249;
+            padding: 18px 16px;
             border: 3px solid #aacbe4;
-            text-align: center;
             box-shadow: inset 0 -3px 0 #b3cfec;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-family: 'Courier New', monospace;
+        }
+        .expr-line {
+            font-size: 1.5rem;
+            line-height: 1.7;
+            display: flex;
+            justify-content: flex-end;
+            align-items: baseline;
+            width: 100%;
+            gap: 10px;
+            font-weight: 600;
+            color: #013249;
+        }
+        .expr-op {
+            width: 2.5ch;
+            text-align: right;
+            font-weight: 700;
+        }
+        .expr-num {
+            text-align: right;
+            min-width: 3ch;
+        }
+        .first {
+            font-weight: 800;
+            font-size: 1.7rem;
+        }
+        .expr-equal {
+            border-top: 3px solid #023047;
+            margin-top: 12px;
+            padding-top: 6px;
+            justify-content: flex-end;
+            font-size: 1.2rem;
+            color: #023047;
+            letter-spacing: 2px;
         }
         .answer-line {
             margin-top: 20px;
@@ -282,6 +311,7 @@
             .sub { background: none; border-left-color: #333; }
             .question-card { box-shadow: none; border: 2px solid #ccc; break-inside: avoid; }
             .blank { border: 3px solid #333; background: white; }
+            .expression { border: 2px solid #aaa; }
         }
         details {
             background: #e5f0f7;
@@ -302,10 +332,10 @@
 <body>
 <div class="worksheet-wrapper" id="worksheetPrint">
     <h1>
-        🖐️ Abacus • formula‑perfect
+        🖐️ Abacus • vertical sums
         <small>bead simulation</small>
     </h1>
-    <div class="sub">Left hand (tens) · Right hand (ones) · +10 = +50−40 · each step uses only selected formula</div>
+    <div class="sub">Left hand (tens) · Right hand (ones) · +10 = +50−40 · stacked problems</div>
 
     <div class="control-panel">
         <div class="formula-selector">
@@ -338,13 +368,11 @@
 
     <div class="note-box">
         <i>✨ 0–99 · 6 numbers</i> 
-        <span>✔️ bead‑accurate · every non‑direct move matches formula</span>
+        <span>✔️ bead‑accurate · vertical layout</span>
     </div>
 
-    <!-- 25 questions grid -->
-    <div id="worksheet" class="worksheet-grid">
-        <!-- js fills -->
-    </div>
+    <!-- 25 questions grid (filled by js) -->
+    <div id="worksheet" class="worksheet-grid"></div>
 
     <div class="footer">
         ⚡ left hand (tens) · right hand (ones) · abacus rods · +10 = +50−40<br>
@@ -359,6 +387,7 @@
             <li>Big friend: adding 6‑9 with carry, or subtracting 6‑9 with borrow.</li>
             <li>Direct moves allowed in any problem. At least one step uses selected formula (if any).</li>
             <li>Problems are built step‑by‑step, rejecting any invalid transition.</li>
+            <li>Now with vertical display – numbers stacked for easier abacus practice.</li>
         </ul>
     </details>
 </div>
@@ -369,38 +398,30 @@
     //  pure abacus bead simulation – ones rod
     // --------------------------------------------------------------
     function addOnes(current, delta) {
-        // current 0-9, delta 0-9
         if (delta === 0) return { newVal: current, carry: 0, formula: null };
         let upper = current >= 5 ? 1 : 0;
         let lower = current - upper * 5;
         if (delta === 5) {
             if (upper === 0) {
-                // direct: raise upper
                 return { newVal: 5 + lower, carry: 0, formula: null };
             } else {
-                // upper already 1 → would overflow (needs big friend for 5? not defined)
                 return null;
             }
         }
         if (delta >= 1 && delta <= 4) {
             if (lower + delta <= 4) {
-                // direct addition on lower beads
                 return { newVal: upper * 5 + (lower + delta), carry: 0, formula: null };
             } else if (upper === 0) {
-                // small friend: add 5, subtract complement
                 return { newVal: 5 + (lower + delta - 5), carry: 0, formula: '+' + delta };
-            } else { // upper === 1
-                // would cause carry and require subtract (10-delta) – not a standard small/big friend for delta<6 → reject
+            } else {
                 return null;
             }
         }
         if (delta >= 6 && delta <= 9) {
             let complement = 10 - delta; // 1..4
-            // big friend addition: need to subtract complement from current without borrow
             let sub = subtractOnes(current, complement);
             if (!sub) return null;
-            if (sub.borrow !== 0) return null; // borrow would mean extra borrow, invalid
-            // formula is big friend '+delta'
+            if (sub.borrow !== 0) return null;
             return { newVal: sub.newVal, carry: 1, formula: '+' + delta };
         }
         return null;
@@ -412,30 +433,25 @@
         let lower = current - upper * 5;
         if (delta === 5) {
             if (upper === 1) {
-                // direct: lower upper
                 return { newVal: lower, borrow: 0, formula: null };
             } else {
-                // need to borrow – would be big friend for 5? not defined
                 return null;
             }
         }
         if (delta >= 1 && delta <= 4) {
             if (lower >= delta) {
-                // direct subtract from lower
                 return { newVal: upper * 5 + (lower - delta), borrow: 0, formula: null };
             } else if (upper === 1) {
-                // small friend subtraction: use upper, add complement to lower
                 return { newVal: (lower + (5 - delta)), borrow: 0, formula: '-' + delta };
-            } else { // upper==0, lower<delta → need borrow, would be big friend for delta 1-4? not in list
+            } else {
                 return null;
             }
         }
         if (delta >= 6 && delta <= 9) {
             let complement = 10 - delta; // 1..4
-            // big friend subtraction: borrow, then add complement
             let add = addOnes(current, complement);
             if (!add) return null;
-            if (add.carry !== 0) return null; // adding complement must not carry again
+            if (add.carry !== 0) return null;
             return { newVal: add.newVal, borrow: 1, formula: '-' + delta };
         }
         return null;
@@ -452,24 +468,21 @@
         let formulas = [];
 
         if (op === '+') {
-            // ones
             let ones = addOnes(CO, NO);
             if (!ones) return null;
             if (ones.formula) formulas.push(ones.formula);
             let newCO = ones.newVal;
             let carry = ones.carry;
 
-            // tens (include carry)
             let tens = addOnes(CT, NT + carry);
             if (!tens) return null;
-            if (tens.carry !== 0) return null; // would exceed 99
+            if (tens.carry !== 0) return null;
             if (tens.formula) formulas.push(tens.formula);
             let newCT = tens.newVal;
             let newValue = newCT * 10 + newCO;
             if (newValue < 0 || newValue > 99) return null;
             return { newValue, formulas };
         } else {
-            // subtraction
             let ones = subtractOnes(CO, NO);
             if (!ones) return null;
             if (ones.formula) formulas.push(ones.formula);
@@ -478,7 +491,7 @@
 
             let tens = subtractOnes(CT, NT + borrow);
             if (!tens) return null;
-            if (tens.borrow !== 0) return null; // below 0
+            if (tens.borrow !== 0) return null;
             if (tens.formula) formulas.push(tens.formula);
             let newCT = tens.newVal;
             let newValue = newCT * 10 + newCO;
@@ -507,15 +520,13 @@
                     valid = false;
                     break;
                 }
-                // check formula constraints
-                let stepFormulas = sim.formulas; // array of strings like '+1', '-6'
+                let stepFormulas = sim.formulas;
                 if (selectedFormula === 'none') {
                     if (stepFormulas.length > 0) {
                         valid = false;
                         break;
                     }
                 } else {
-                    // every formula in this step must equal selectedFormula, or be direct (empty)
                     for (let f of stepFormulas) {
                         if (f !== selectedFormula) {
                             valid = false;
@@ -525,21 +536,20 @@
                     if (!valid) break;
                     if (stepFormulas.length > 0) usedFormulaInProblem = true;
                 }
-                // accept step
                 current = sim.newValue;
                 numbers.push(num);
                 ops.push(op);
             }
             if (valid) {
-                if (selectedFormula !== 'none' && !usedFormulaInProblem) continue; // need at least one formula use
+                if (selectedFormula !== 'none' && !usedFormulaInProblem) continue;
                 return { numbers, ops };
             }
         }
-        return null; // fallback (should rarely happen)
+        return null;
     }
 
     // --------------------------------------------------------------
-    //  generate 25 problems and render
+    //  generate 25 problems and render VERTICAL layout
     // --------------------------------------------------------------
     function renderWorksheet() {
         const select = document.getElementById('formulaSelect');
@@ -559,7 +569,6 @@
             attempts++;
         }
 
-        // if still not enough, fill with safe defaults (very unlikely)
         while (problems.length < 25) {
             problems.push({
                 numbers: [45, 12, 23, 34, 11, 22],
@@ -570,10 +579,6 @@
         problems.forEach((prob, idx) => {
             const q = idx + 1;
             const { numbers, ops } = prob;
-            let exprStr = numbers[0].toString();
-            for (let i = 0; i < ops.length; i++) {
-                exprStr += ` ${ops[i]} ${numbers[i+1]}`;
-            }
 
             const card = document.createElement('div');
             card.className = 'question-card';
@@ -582,9 +587,17 @@
             qNum.className = 'q-num';
             qNum.textContent = q;
 
+            // build vertical expression
             const exprDiv = document.createElement('div');
             exprDiv.className = 'expression';
-            exprDiv.textContent = exprStr;
+
+            let linesHtml = '';
+            linesHtml += `<div class="expr-line first"><span class="expr-num">${numbers[0]}</span></div>`;
+            for (let i = 0; i < ops.length; i++) {
+                linesHtml += `<div class="expr-line"><span class="expr-op">${ops[i]}</span><span class="expr-num">${numbers[i+1]}</span></div>`;
+            }
+            linesHtml += `<div class="expr-line expr-equal">───</div>`;
+            exprDiv.innerHTML = linesHtml;
 
             const answerDiv = document.createElement('div');
             answerDiv.className = 'answer-line';
@@ -597,7 +610,6 @@
         });
     }
 
-    // initial load
     renderWorksheet();
 
     document.getElementById('generateBtn').addEventListener('click', function() {
