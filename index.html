@@ -303,16 +303,6 @@
             margin-top: 15px;
             border: 2px solid #7bb8da;
         }
-        @media print {
-            body { background: white; padding: 0.2in; animation: none; }
-            .worksheet-wrapper { box-shadow: none; backdrop-filter: none; background: white; }
-            .control-panel, .button-group, .pdf-btn, .note-box, .footer .finger-hint, details { display: none; }
-            h1 { -webkit-text-fill-color: #022c40; background: none; text-shadow: none; }
-            .sub { background: none; border-left-color: #333; }
-            .question-card { box-shadow: none; border: 2px solid #ccc; break-inside: avoid; }
-            .blank { border: 3px solid #333; background: white; }
-            .expression { border: 2px solid #aaa; }
-        }
         details {
             background: #e5f0f7;
             border-radius: 40px;
@@ -326,6 +316,128 @@
             font-size: 1.3rem;
             cursor: pointer;
             color: #01446b;
+        }
+
+        /* ========== PRINT / PDF EXPORT STYLES ========== */
+        @media print {
+            @page {
+                size: letter;
+                margin: 0.35in 0.3in 0.3in 0.3in;
+            }
+            body {
+                background: white;
+                padding: 0;
+                animation: none;
+            }
+            .worksheet-wrapper {
+                box-shadow: none;
+                backdrop-filter: none;
+                background: white;
+                padding: 0;
+                border-radius: 0;
+                border: none;
+                max-width: 100%;
+            }
+            .control-panel,
+            .button-group,
+            .pdf-btn,
+            .note-box,
+            .footer .finger-hint,
+            details {
+                display: none;
+            }
+            h1 {
+                -webkit-text-fill-color: #022c40;
+                background: none;
+                text-shadow: none;
+                font-size: 1.5rem;
+                margin-bottom: 2px;
+            }
+            h1 small {
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
+            .sub {
+                background: none;
+                border-left-color: #333;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                margin: 3px 0 10px 0;
+                border-left-width: 5px;
+            }
+            .worksheet-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 7px;
+                margin: 12px 0 10px;
+            }
+            .question-card {
+                box-shadow: none;
+                border: 1px solid #bbb;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                padding: 8px 6px 6px;
+                border-radius: 10px;
+                background: white;
+            }
+            .q-num {
+                width: 22px;
+                height: 22px;
+                line-height: 22px;
+                font-size: 0.7rem;
+                margin-bottom: 5px;
+                box-shadow: none;
+                border-radius: 16px;
+                border: 1px solid #ddd;
+                background: #fcaa3a;
+            }
+            .expression {
+                padding: 6px 5px;
+                border-radius: 8px;
+                border: 1px solid #bbb;
+                background: #f8fbff;
+                box-shadow: none;
+            }
+            .expr-line {
+                font-size: 0.72rem;
+                line-height: 1.25;
+                gap: 4px;
+            }
+            .first { font-size: 0.8rem; }
+            .expr-op { width: 1.8ch; }
+            .expr-num { min-width: 2ch; }
+            .expr-equal {
+                border-top: 1.5px solid #023047;
+                margin-top: 4px;
+                padding-top: 2px;
+                font-size: 0.65rem;
+                letter-spacing: 1px;
+            }
+            .answer-line {
+                margin-top: 5px;
+                padding-top: 5px;
+                gap: 4px;
+                border-top: 2px dashed #ccc;
+            }
+            .answer-label {
+                font-size: 0.6rem;
+                padding: 3px 8px;
+                border: 1px solid #bbb;
+                background: #f0f5fa;
+            }
+            .blank {
+                width: 40px;
+                height: 28px;
+                border: 2px solid #000;
+                background: white;
+                box-shadow: none;
+                border-radius: 8px;
+            }
+            .footer {
+                margin-top: 10px;
+                padding-top: 8px;
+                font-size: 0.7rem;
+                border-top: 1px solid #ccc;
+            }
         }
     </style>
 </head>
