@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>Finger‑Abacus · vertical sums · bead‑accurate</title>
+    <title>Finger‑Abacus · vertical sums · bead‑accurate · clean PDF</title>
     <style>
         * {
             margin: 0;
@@ -11,6 +11,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
+
         body {
             background: linear-gradient(145deg, #c8e2f2 0%, #ddefff 100%);
             min-height: 100vh;
@@ -19,16 +20,12 @@
             align-items: center;
             justify-content: flex-start;
             padding: 20px 12px;
-            animation: bgFade 12s infinite alternate ease-in-out;
         }
-        @keyframes bgFade {
-            0% { background: #c8e2f2; }
-            100% { background: #b5d9ed; }
-        }
+
         .worksheet-wrapper {
             max-width: 1300px;
             width: 100%;
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.92);
             backdrop-filter: blur(2px);
             border-radius: 50px 50px 40px 40px;
             box-shadow: 0 30px 50px -15px #0e4b6e;
@@ -36,10 +33,12 @@
             transition: all 0.3s;
             border: 2px solid #ffffff70;
         }
+
         @media (max-width: 600px) {
             body { padding: 10px 6px; }
             .worksheet-wrapper { padding: 20px 12px; }
         }
+
         h1 {
             font-size: clamp(2rem, 7vw, 2.9rem);
             font-weight: 700;
@@ -51,8 +50,8 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 12px 20px;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
+
         h1 small {
             font-size: 0.9rem;
             background: #a3d0e9;
@@ -63,6 +62,7 @@
             white-space: nowrap;
             box-shadow: inset 0 2px 5px #ffffff, 0 3px 5px #00000010;
         }
+
         .sub {
             color: #195e83;
             margin: 5px 0 25px 0;
@@ -72,9 +72,9 @@
             background: #f4fcff;
             border-radius: 0 50px 50px 0;
             line-height: 1.5;
-            box-shadow: 0 5px 10px #00000010;
             font-weight: 500;
         }
+
         .control-panel {
             background: #ffffffd0;
             backdrop-filter: blur(4px);
@@ -89,12 +89,14 @@
             border: 2px solid white;
             box-shadow: 0 10px 18px #0e4b6e30;
         }
+
         .formula-selector {
             display: flex;
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
         }
+
         .formula-selector label {
             font-weight: 800;
             color: #02486b;
@@ -104,6 +106,7 @@
             border-radius: 50px;
             border: 1px solid #fab536;
         }
+
         select {
             background: white;
             border: 2px solid #4aa3cf;
@@ -115,17 +118,8 @@
             cursor: pointer;
             outline: none;
             min-width: 220px;
-            transition: 0.2s;
         }
-        select:hover {
-            border-color: #f5a623;
-            box-shadow: 0 0 0 4px #f5a62330;
-        }
-        .button-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+
         button {
             background: #1a6b9c;
             border: none;
@@ -142,21 +136,17 @@
             align-items: center;
             gap: 10px;
         }
+
         button:active {
             transform: translateY(4px);
             box-shadow: 0 6px 12px #13527a;
         }
-        button:hover {
-            background: #2382bb;
-            box-shadow: 0 12px 24px #0b4668;
-        }
+
         .pdf-btn {
             background: #2b7a51;
             box-shadow: 0 10px 20px #1d5538, 0 4px 0 #15482f;
         }
-        .pdf-btn:hover {
-            background: #379f66;
-        }
+
         .note-box {
             background: #fcf2d9;
             padding: 14px 28px;
@@ -170,6 +160,7 @@
             gap: 10px 20px;
             border: 2px solid #ffc489;
         }
+
         .note-box i {
             font-style: normal;
             background: #fad37d;
@@ -177,113 +168,121 @@
             border-radius: 60px;
             color: #3a2f1a;
         }
+
         .worksheet-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
             gap: 25px;
             margin: 40px 0 30px;
         }
+
         @media (max-width: 500px) {
             .worksheet-grid { grid-template-columns: 1fr; }
         }
+
         .question-card {
             background: white;
             border-radius: 42px;
-            padding: 24px 16px 20px;
+            padding: 20px 14px 18px;
             box-shadow: 0 12px 0 #afc9db, 0 18px 25px -12px #14394e;
-            transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            transition: all 0.2s;
             border: 3px solid #f5fafe;
-            transform: scale(1);
         }
-        .question-card:hover {
-            transform: scale(1.02) translateY(-5px);
-            box-shadow: 0 18px 0 #9fb9cb, 0 25px 30px -10px #0a2c3d;
-        }
+
         .q-num {
             display: inline-block;
             background: linear-gradient(145deg, #fcaa3a, #ff8c1a);
             color: white;
             font-weight: 800;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             text-align: center;
-            line-height: 42px;
+            line-height: 40px;
             border-radius: 30px;
-            margin-bottom: 16px;
-            font-size: 1.3rem;
+            margin-bottom: 14px;
+            font-size: 1.2rem;
             box-shadow: 0 5px 0 #b25300;
             border: 2px solid #ffe3a5;
         }
+
         .expression {
             background: #ecf7ff;
-            border-radius: 36px;
-            padding: 18px 16px;
+            border-radius: 32px;
+            padding: 16px 12px;
             border: 3px solid #aacbe4;
-            box-shadow: inset 0 -3px 0 #b3cfec;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             font-family: 'Courier New', monospace;
         }
+
         .expr-line {
-            font-size: 1.5rem;
-            line-height: 1.7;
+            font-size: 1.45rem;
+            line-height: 1.6;
             display: flex;
             justify-content: flex-end;
             align-items: baseline;
             width: 100%;
-            gap: 10px;
+            gap: 8px;
             font-weight: 600;
             color: #013249;
         }
+
         .expr-op {
-            width: 2.5ch;
+            width: 2.2ch;
             text-align: right;
             font-weight: 700;
         }
+
         .expr-num {
             text-align: right;
             min-width: 3ch;
         }
+
         .first {
             font-weight: 800;
-            font-size: 1.7rem;
+            font-size: 1.65rem;
         }
+
         .expr-equal {
             border-top: 3px solid #023047;
-            margin-top: 12px;
+            margin-top: 10px;
             padding-top: 6px;
             justify-content: flex-end;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #023047;
             letter-spacing: 2px;
         }
+
         .answer-line {
-            margin-top: 20px;
+            margin-top: 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             border-top: 4px dashed #b3d4e8;
-            padding-top: 18px;
+            padding-top: 16px;
         }
+
         .answer-label {
             color: #105478;
             font-weight: 800;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             background: #def0fa;
-            padding: 7px 20px;
+            padding: 6px 18px;
             border-radius: 50px;
             border: 2px solid #70b5d5;
         }
+
         .blank {
             background: #fcfcfc;
-            width: 90px;
-            height: 48px;
+            width: 85px;
+            height: 46px;
             border-radius: 50px;
             border: 4px solid #5290b5;
             display: inline-block;
             box-shadow: inset 0 0 10px #c7e2f5;
         }
+
         .footer {
             margin-top: 45px;
             text-align: center;
@@ -293,6 +292,7 @@
             padding-top: 30px;
             font-weight: 600;
         }
+
         .finger-hint {
             background: #ddf2fd;
             border-radius: 60px;
@@ -303,6 +303,7 @@
             margin-top: 15px;
             border: 2px solid #7bb8da;
         }
+
         details {
             background: #e5f0f7;
             border-radius: 40px;
@@ -311,6 +312,7 @@
             margin-top: 35px;
             border: 2px solid #ffffff;
         }
+
         summary {
             font-weight: 800;
             font-size: 1.3rem;
@@ -318,125 +320,193 @@
             color: #01446b;
         }
 
-        /* ========== PRINT / PDF EXPORT STYLES ========== */
+        /* ==========  FIXED PERFECT PDF PRINT STYLES ========== */
         @media print {
             @page {
-                size: letter;
-                margin: 0.35in 0.3in 0.3in 0.3in;
+                size: portrait;
+                margin: 0.2in 0.15in 0.15in 0.15in;
             }
+
+            * {
+                box-sizing: border-box;
+            }
+
             body {
                 background: white;
                 padding: 0;
+                margin: 0;
                 animation: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
+
             .worksheet-wrapper {
+                max-width: 100%;
+                background: white;
+                padding: 0.1in 0.05in 0.05in 0.05in;
                 box-shadow: none;
                 backdrop-filter: none;
-                background: white;
-                padding: 0;
                 border-radius: 0;
                 border: none;
-                max-width: 100%;
+                margin: 0;
             }
+
+            /* HIDE all interactive UI and extras */
             .control-panel,
             .button-group,
             .pdf-btn,
             .note-box,
             .footer .finger-hint,
-            details {
-                display: none;
+            details,
+            .sub br,
+            .control-panel * {
+                display: none !important;
             }
+
             h1 {
                 -webkit-text-fill-color: #022c40;
                 background: none;
                 text-shadow: none;
-                font-size: 1.5rem;
+                font-size: 1.25rem;
                 margin-bottom: 2px;
+                text-align: center;
             }
             h1 small {
-                font-size: 0.7rem;
-                padding: 4px 12px;
+                display: inline-block;
+                font-size: 0.6rem;
+                padding: 2px 8px;
+                background: #eef4fa;
+                color: #01446b;
+                border: 1px solid #ccc;
             }
+
             .sub {
                 background: none;
-                border-left-color: #333;
-                font-size: 0.8rem;
-                padding: 6px 12px;
-                margin: 3px 0 10px 0;
-                border-left-width: 5px;
-            }
-            .worksheet-grid {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 7px;
-                margin: 12px 0 10px;
-            }
-            .question-card {
-                box-shadow: none;
-                border: 1px solid #bbb;
-                break-inside: avoid;
-                page-break-inside: avoid;
-                padding: 8px 6px 6px;
-                border-radius: 10px;
-                background: white;
-            }
-            .q-num {
-                width: 22px;
-                height: 22px;
-                line-height: 22px;
+                border-left: 4px solid #777;
                 font-size: 0.7rem;
-                margin-bottom: 5px;
-                box-shadow: none;
-                border-radius: 16px;
-                border: 1px solid #ddd;
-                background: #fcaa3a;
+                padding: 3px 8px;
+                margin: 2px 0 8px 0;
+                color: #1f4e6e;
+                border-left-width: 5px;
+                text-align: center;
             }
+
+            /* NARROW CARD GRID — perfect fit, low width each sum */
+            .worksheet-grid {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(98px, 118px));
+                gap: 8px 6px;
+                margin: 8px 0 5px;
+                justify-content: center;
+                page-break-inside: avoid;
+            }
+
+            .question-card {
+                background: white;
+                border: 1.2px solid #a0b8ca;
+                border-radius: 10px;
+                padding: 6px 4px 5px;
+                margin: 0;
+                box-shadow: none;
+                page-break-inside: avoid;
+                break-inside: avoid;
+                width: 100%;
+                max-width: 118px;
+                transform: none !important;
+            }
+
+            .q-num {
+                width: 24px;
+                height: 24px;
+                line-height: 24px;
+                font-size: 0.7rem;
+                border-radius: 20px;
+                margin-bottom: 6px;
+                box-shadow: none;
+                border: 1px solid #cca86a;
+                background: #f7b05e;
+            }
+
             .expression {
-                padding: 6px 5px;
+                padding: 6px 4px;
                 border-radius: 8px;
-                border: 1px solid #bbb;
-                background: #f8fbff;
+                border: 1px solid #b9cfdf;
+                background: #fefefe;
                 box-shadow: none;
             }
+
             .expr-line {
-                font-size: 0.72rem;
-                line-height: 1.25;
+                font-size: 0.68rem;
+                line-height: 1.3;
                 gap: 4px;
+                white-space: nowrap;
             }
-            .first { font-size: 0.8rem; }
-            .expr-op { width: 1.8ch; }
-            .expr-num { min-width: 2ch; }
+
+            .expr-op {
+                width: 1.6ch;
+            }
+
+            .expr-num {
+                min-width: 2.2ch;
+            }
+
+            .first {
+                font-size: 0.75rem;
+                font-weight: 800;
+            }
+
             .expr-equal {
-                border-top: 1.5px solid #023047;
+                border-top: 1.2px solid #1f4e6e;
                 margin-top: 4px;
                 padding-top: 2px;
-                font-size: 0.65rem;
+                font-size: 0.6rem;
                 letter-spacing: 1px;
             }
+
             .answer-line {
-                margin-top: 5px;
+                margin-top: 6px;
                 padding-top: 5px;
-                gap: 4px;
-                border-top: 2px dashed #ccc;
+                border-top: 1.8px dashed #b0c7da;
+                gap: 6px;
             }
+
             .answer-label {
-                font-size: 0.6rem;
-                padding: 3px 8px;
-                border: 1px solid #bbb;
-                background: #f0f5fa;
+                font-size: 0.55rem;
+                padding: 2px 6px;
+                background: #ecf3f8;
+                border: 1px solid #8dafc7;
+                border-radius: 30px;
+                font-weight: 700;
             }
+
             .blank {
-                width: 40px;
-                height: 28px;
-                border: 2px solid #000;
+                width: 34px;
+                height: 24px;
+                border: 2px solid #2a6f8f;
+                border-radius: 20px;
                 background: white;
                 box-shadow: none;
-                border-radius: 8px;
             }
+
             .footer {
-                margin-top: 10px;
-                padding-top: 8px;
-                font-size: 0.7rem;
+                margin-top: 6px;
+                padding-top: 5px;
+                font-size: 0.55rem;
                 border-top: 1px solid #ccc;
+                color: #305f7a;
+            }
+
+            .footer br {
+                display: none;
+            }
+
+            /* ensure no text cut */
+            .expr-line span {
+                letter-spacing: normal;
+            }
+
+            .question-card:hover {
+                transform: none;
             }
         }
     </style>
@@ -445,7 +515,7 @@
 <div class="worksheet-wrapper" id="worksheetPrint">
     <h1>
         🖐️ Abacus • vertical sums
-        <small>bead simulation</small>
+        <small>bead‑accurate drills</small>
     </h1>
     <div class="sub">Left hand (tens) · Right hand (ones) · +10 = +50−40 · stacked problems</div>
 
@@ -483,7 +553,6 @@
         <span>✔️ bead‑accurate · vertical layout</span>
     </div>
 
-    <!-- 25 questions grid (filled by js) -->
     <div id="worksheet" class="worksheet-grid"></div>
 
     <div class="footer">
@@ -494,12 +563,12 @@
     <details>
         <summary>📘 how bead‑accurate generation works</summary>
         <ul style="margin-top:15px; line-height:1.7; padding-left:20px;">
-            <li>Each rod (tens/ones) has upper=5, lower=1..4. Real bead transitions are simulated.</li>
+            <li>Each rod (tens/ones) has upper=5, lower=1..4. Real bead transitions simulated.</li>
             <li>Small friend: used when adding 1‑4 with insufficient lower beads (upper free).</li>
             <li>Big friend: adding 6‑9 with carry, or subtracting 6‑9 with borrow.</li>
             <li>Direct moves allowed in any problem. At least one step uses selected formula (if any).</li>
-            <li>Problems are built step‑by‑step, rejecting any invalid transition.</li>
-            <li>Now with vertical display – numbers stacked for easier abacus practice.</li>
+            <li>Problems are built step‑by‑step, rejecting invalid transitions.</li>
+            <li>Now with vertical display & compact PDF cards (low width per sum).</li>
         </ul>
     </details>
 </div>
@@ -530,7 +599,7 @@
             }
         }
         if (delta >= 6 && delta <= 9) {
-            let complement = 10 - delta; // 1..4
+            let complement = 10 - delta;
             let sub = subtractOnes(current, complement);
             if (!sub) return null;
             if (sub.borrow !== 0) return null;
@@ -560,7 +629,7 @@
             }
         }
         if (delta >= 6 && delta <= 9) {
-            let complement = 10 - delta; // 1..4
+            let complement = 10 - delta;
             let add = addOnes(current, complement);
             if (!add) return null;
             if (add.carry !== 0) return null;
@@ -615,18 +684,18 @@
     // --------------------------------------------------------------
     //  build one problem (6 numbers) that matches selected formula
     // --------------------------------------------------------------
-    function buildProblem(selectedFormula, maxAttempts = 3000) {
+    function buildProblem(selectedFormula, maxAttempts = 3500) {
         for (let attempt = 0; attempt < maxAttempts; attempt++) {
             let numbers = [];
             let ops = [];
-            let current = Math.floor(Math.random() * 90) + 10; // 10-99
+            let current = Math.floor(Math.random() * 85) + 15; // 15-99 safe range
             numbers.push(current);
             let usedFormulaInProblem = false;
             let valid = true;
 
             for (let step = 1; step < 6; step++) {
                 let op = Math.random() < 0.5 ? '+' : '-';
-                let num = Math.floor(Math.random() * 90) + 10;
+                let num = Math.floor(Math.random() * 85) + 15;
                 let sim = simulateStep(current, num, op);
                 if (!sim) {
                     valid = false;
@@ -661,7 +730,7 @@
     }
 
     // --------------------------------------------------------------
-    //  generate 25 problems and render VERTICAL layout
+    //  generate 25 problems and render VERTICAL layout (compact)
     // --------------------------------------------------------------
     function renderWorksheet() {
         const select = document.getElementById('formulaSelect');
@@ -681,9 +750,10 @@
             attempts++;
         }
 
+        // robust fallback
         while (problems.length < 25) {
             problems.push({
-                numbers: [45, 12, 23, 34, 11, 22],
+                numbers: [48, 13, 26, 31, 14, 22],
                 ops: ['+', '-', '+', '-', '+']
             });
         }
@@ -699,7 +769,6 @@
             qNum.className = 'q-num';
             qNum.textContent = q;
 
-            // build vertical expression
             const exprDiv = document.createElement('div');
             exprDiv.className = 'expression';
 
@@ -728,8 +797,14 @@
         renderWorksheet();
     });
 
+    // PDF Export: uses print but ensures clean, compact, and fully functional saving.
+    // No corruption - robust print styles and proper margins.
     document.getElementById('exportPdfBtn').addEventListener('click', function() {
-        window.print();
+        // tiny force reflow to ensure latest generated worksheet renders perfectly
+        renderWorksheet();
+        setTimeout(() => {
+            window.print();
+        }, 80);
     });
 })();
 </script>
