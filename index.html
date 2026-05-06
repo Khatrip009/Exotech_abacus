@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>Finger‑Abacus · vertical sums · bead‑accurate · clean PDF</title>
+    <title>Finger‑Abacus · vertical sums · bead‑accurate</title>
     <style>
         * {
             margin: 0;
@@ -27,16 +27,10 @@
             width: 100%;
             background: rgba(255,255,255,0.92);
             backdrop-filter: blur(2px);
-            border-radius: 50px 50px 40px 40px;
-            box-shadow: 0 30px 50px -15px #0e4b6e;
+            border-radius: 50px;
             padding: 28px 22px 35px;
-            transition: all 0.3s;
+            box-shadow: 0 30px 50px -15px #0e4b6e;
             border: 2px solid #ffffff70;
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 10px 6px; }
-            .worksheet-wrapper { padding: 20px 12px; }
         }
 
         h1 {
@@ -45,9 +39,8 @@
             background: linear-gradient(135deg, #063b55, #1f6d9b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 0 0 5px 0;
+            margin-bottom: 5px;
             display: flex;
-            align-items: center;
             flex-wrap: wrap;
             gap: 12px 20px;
         }
@@ -59,19 +52,16 @@
             padding: 7px 20px;
             border-radius: 60px;
             font-weight: 600;
-            white-space: nowrap;
-            box-shadow: inset 0 2px 5px #ffffff, 0 3px 5px #00000010;
         }
 
         .sub {
             color: #195e83;
-            margin: 5px 0 25px 0;
-            font-size: clamp(1rem, 4vw, 1.25rem);
+            margin: 5px 0 25px;
+            font-size: 1.2rem;
             border-left: 8px solid #fdbb5c;
             padding: 12px 22px;
             background: #f4fcff;
             border-radius: 0 50px 50px 0;
-            line-height: 1.5;
             font-weight: 500;
         }
 
@@ -83,7 +73,6 @@
             margin-bottom: 35px;
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             justify-content: space-between;
             gap: 15px 25px;
             border: 2px solid white;
@@ -100,7 +89,6 @@
         .formula-selector label {
             font-weight: 800;
             color: #02486b;
-            font-size: 1.2rem;
             background: #faf3d7;
             padding: 8px 20px;
             border-radius: 50px;
@@ -114,9 +102,7 @@
             padding: 12px 28px;
             font-size: 1.1rem;
             font-weight: 600;
-            color: #022d42;
             cursor: pointer;
-            outline: none;
             min-width: 220px;
         }
 
@@ -130,16 +116,12 @@
             border-radius: 70px;
             cursor: pointer;
             box-shadow: 0 10px 20px #13527a, 0 4px 0 #0e3d5a;
-            transition: all 0.1s ease;
+            transition: 0.1s ease;
             border: 1px solid #ffffff90;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
         }
 
         button:active {
             transform: translateY(4px);
-            box-shadow: 0 6px 12px #13527a;
         }
 
         .pdf-btn {
@@ -152,21 +134,12 @@
             padding: 14px 28px;
             border-radius: 70px;
             color: #6d4c2b;
-            font-size: 1rem;
             font-weight: 600;
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
             gap: 10px 20px;
             border: 2px solid #ffc489;
-        }
-
-        .note-box i {
-            font-style: normal;
-            background: #fad37d;
-            padding: 5px 18px;
-            border-radius: 60px;
-            color: #3a2f1a;
+            margin-bottom: 20px;
         }
 
         .worksheet-grid {
@@ -176,16 +149,11 @@
             margin: 40px 0 30px;
         }
 
-        @media (max-width: 500px) {
-            .worksheet-grid { grid-template-columns: 1fr; }
-        }
-
         .question-card {
             background: white;
             border-radius: 42px;
             padding: 20px 14px 18px;
-            box-shadow: 0 12px 0 #afc9db, 0 18px 25px -12px #14394e;
-            transition: all 0.2s;
+            box-shadow: 0 12px 0 #afc9db;
             border: 3px solid #f5fafe;
         }
 
@@ -200,7 +168,6 @@
             line-height: 40px;
             border-radius: 30px;
             margin-bottom: 14px;
-            font-size: 1.2rem;
             box-shadow: 0 5px 0 #b25300;
             border: 2px solid #ffe3a5;
         }
@@ -221,43 +188,26 @@
             line-height: 1.6;
             display: flex;
             justify-content: flex-end;
-            align-items: baseline;
             width: 100%;
             gap: 8px;
             font-weight: 600;
             color: #013249;
         }
 
-        .expr-op {
-            width: 2.2ch;
-            text-align: right;
-            font-weight: 700;
-        }
-
-        .expr-num {
-            text-align: right;
-            min-width: 3ch;
-        }
-
-        .first {
-            font-weight: 800;
-            font-size: 1.65rem;
-        }
-
+        .expr-op { width: 2.2ch; text-align: right; }
+        .expr-num { text-align: right; min-width: 3ch; }
+        .first { font-weight: 800; font-size: 1.65rem; }
         .expr-equal {
             border-top: 3px solid #023047;
             margin-top: 10px;
             padding-top: 6px;
             justify-content: flex-end;
             font-size: 1.1rem;
-            color: #023047;
-            letter-spacing: 2px;
         }
 
         .answer-line {
             margin-top: 18px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
             border-top: 4px dashed #b3d4e8;
             padding-top: 16px;
@@ -279,15 +229,12 @@
             height: 46px;
             border-radius: 50px;
             border: 4px solid #5290b5;
-            display: inline-block;
-            box-shadow: inset 0 0 10px #c7e2f5;
         }
 
         .footer {
             margin-top: 45px;
             text-align: center;
             color: #195e83;
-            font-size: 1.1rem;
             border-top: 3px solid #b0d0e7;
             padding-top: 30px;
             font-weight: 600;
@@ -297,8 +244,6 @@
             background: #ddf2fd;
             border-radius: 60px;
             padding: 10px 28px;
-            font-size: 1.1rem;
-            color: #024d73;
             display: inline-block;
             margin-top: 15px;
             border: 2px solid #7bb8da;
@@ -308,215 +253,20 @@
             background: #e5f0f7;
             border-radius: 40px;
             padding: 20px 30px;
-            color: #0b3954;
             margin-top: 35px;
             border: 2px solid #ffffff;
         }
+        summary { font-weight: 800; font-size: 1.3rem; cursor: pointer; }
 
-        summary {
-            font-weight: 800;
-            font-size: 1.3rem;
-            cursor: pointer;
-            color: #01446b;
-        }
-
-        /* ==========  FIXED PERFECT PDF PRINT STYLES ========== */
+        /* Hide interactive elements on print (but we'll use a separate window for PDF) */
         @media print {
-            @page {
-                size: portrait;
-                margin: 0.2in 0.15in 0.15in 0.15in;
-            }
-
-            * {
-                box-sizing: border-box;
-            }
-
-            body {
-                background: white;
-                padding: 0;
-                margin: 0;
-                animation: none;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .worksheet-wrapper {
-                max-width: 100%;
-                background: white;
-                padding: 0.1in 0.05in 0.05in 0.05in;
-                box-shadow: none;
-                backdrop-filter: none;
-                border-radius: 0;
-                border: none;
-                margin: 0;
-            }
-
-            /* HIDE all interactive UI and extras */
-            .control-panel,
-            .button-group,
-            .pdf-btn,
-            .note-box,
-            .footer .finger-hint,
-            details,
-            .sub br,
-            .control-panel * {
-                display: none !important;
-            }
-
-            h1 {
-                -webkit-text-fill-color: #022c40;
-                background: none;
-                text-shadow: none;
-                font-size: 1.25rem;
-                margin-bottom: 2px;
-                text-align: center;
-            }
-            h1 small {
-                display: inline-block;
-                font-size: 0.6rem;
-                padding: 2px 8px;
-                background: #eef4fa;
-                color: #01446b;
-                border: 1px solid #ccc;
-            }
-
-            .sub {
-                background: none;
-                border-left: 4px solid #777;
-                font-size: 0.7rem;
-                padding: 3px 8px;
-                margin: 2px 0 8px 0;
-                color: #1f4e6e;
-                border-left-width: 5px;
-                text-align: center;
-            }
-
-            /* NARROW CARD GRID — perfect fit, low width each sum */
-            .worksheet-grid {
-                display: grid;
-                grid-template-columns: repeat(5, minmax(98px, 118px));
-                gap: 8px 6px;
-                margin: 8px 0 5px;
-                justify-content: center;
-                page-break-inside: avoid;
-            }
-
-            .question-card {
-                background: white;
-                border: 1.2px solid #a0b8ca;
-                border-radius: 10px;
-                padding: 6px 4px 5px;
-                margin: 0;
-                box-shadow: none;
-                page-break-inside: avoid;
-                break-inside: avoid;
-                width: 100%;
-                max-width: 118px;
-                transform: none !important;
-            }
-
-            .q-num {
-                width: 24px;
-                height: 24px;
-                line-height: 24px;
-                font-size: 0.7rem;
-                border-radius: 20px;
-                margin-bottom: 6px;
-                box-shadow: none;
-                border: 1px solid #cca86a;
-                background: #f7b05e;
-            }
-
-            .expression {
-                padding: 6px 4px;
-                border-radius: 8px;
-                border: 1px solid #b9cfdf;
-                background: #fefefe;
-                box-shadow: none;
-            }
-
-            .expr-line {
-                font-size: 0.68rem;
-                line-height: 1.3;
-                gap: 4px;
-                white-space: nowrap;
-            }
-
-            .expr-op {
-                width: 1.6ch;
-            }
-
-            .expr-num {
-                min-width: 2.2ch;
-            }
-
-            .first {
-                font-size: 0.75rem;
-                font-weight: 800;
-            }
-
-            .expr-equal {
-                border-top: 1.2px solid #1f4e6e;
-                margin-top: 4px;
-                padding-top: 2px;
-                font-size: 0.6rem;
-                letter-spacing: 1px;
-            }
-
-            .answer-line {
-                margin-top: 6px;
-                padding-top: 5px;
-                border-top: 1.8px dashed #b0c7da;
-                gap: 6px;
-            }
-
-            .answer-label {
-                font-size: 0.55rem;
-                padding: 2px 6px;
-                background: #ecf3f8;
-                border: 1px solid #8dafc7;
-                border-radius: 30px;
-                font-weight: 700;
-            }
-
-            .blank {
-                width: 34px;
-                height: 24px;
-                border: 2px solid #2a6f8f;
-                border-radius: 20px;
-                background: white;
-                box-shadow: none;
-            }
-
-            .footer {
-                margin-top: 6px;
-                padding-top: 5px;
-                font-size: 0.55rem;
-                border-top: 1px solid #ccc;
-                color: #305f7a;
-            }
-
-            .footer br {
-                display: none;
-            }
-
-            /* ensure no text cut */
-            .expr-line span {
-                letter-spacing: normal;
-            }
-
-            .question-card:hover {
-                transform: none;
-            }
+            body > *:not(.print-only) { display: none; }
         }
     </style>
 </head>
 <body>
-<div class="worksheet-wrapper" id="worksheetPrint">
-    <h1>
-        🖐️ Abacus • vertical sums
-        <small>bead‑accurate drills</small>
-    </h1>
+<div class="worksheet-wrapper">
+    <h1>🖐️ Abacus • vertical sums <small>bead‑accurate drills</small></h1>
     <div class="sub">Left hand (tens) · Right hand (ones) · +10 = +50−40 · stacked problems</div>
 
     <div class="control-panel">
@@ -566,8 +316,7 @@
             <li>Each rod (tens/ones) has upper=5, lower=1..4. Real bead transitions simulated.</li>
             <li>Small friend: used when adding 1‑4 with insufficient lower beads (upper free).</li>
             <li>Big friend: adding 6‑9 with carry, or subtracting 6‑9 with borrow.</li>
-            <li>Direct moves allowed in any problem. At least one step uses selected formula (if any).</li>
-            <li>Problems are built step‑by‑step, rejecting invalid transitions.</li>
+            <li>Direct moves allowed. At least one step uses selected formula (if any).</li>
             <li>Now with vertical display & compact PDF cards (low width per sum).</li>
         </ul>
     </details>
@@ -575,34 +324,24 @@
 
 <script>
 (function() {
-    // --------------------------------------------------------------
-    //  pure abacus bead simulation – ones rod
-    // --------------------------------------------------------------
+    // ==================== ABACUS BEAD SIMULATION ====================
     function addOnes(current, delta) {
         if (delta === 0) return { newVal: current, carry: 0, formula: null };
         let upper = current >= 5 ? 1 : 0;
         let lower = current - upper * 5;
         if (delta === 5) {
-            if (upper === 0) {
-                return { newVal: 5 + lower, carry: 0, formula: null };
-            } else {
-                return null;
-            }
+            if (upper === 0) return { newVal: 5 + lower, carry: 0, formula: null };
+            else return null;
         }
         if (delta >= 1 && delta <= 4) {
-            if (lower + delta <= 4) {
-                return { newVal: upper * 5 + (lower + delta), carry: 0, formula: null };
-            } else if (upper === 0) {
-                return { newVal: 5 + (lower + delta - 5), carry: 0, formula: '+' + delta };
-            } else {
-                return null;
-            }
+            if (lower + delta <= 4) return { newVal: upper * 5 + (lower + delta), carry: 0, formula: null };
+            else if (upper === 0) return { newVal: 5 + (lower + delta - 5), carry: 0, formula: '+' + delta };
+            else return null;
         }
         if (delta >= 6 && delta <= 9) {
             let complement = 10 - delta;
             let sub = subtractOnes(current, complement);
-            if (!sub) return null;
-            if (sub.borrow !== 0) return null;
+            if (!sub || sub.borrow !== 0) return null;
             return { newVal: sub.newVal, carry: 1, formula: '+' + delta };
         }
         return null;
@@ -613,125 +352,84 @@
         let upper = current >= 5 ? 1 : 0;
         let lower = current - upper * 5;
         if (delta === 5) {
-            if (upper === 1) {
-                return { newVal: lower, borrow: 0, formula: null };
-            } else {
-                return null;
-            }
+            if (upper === 1) return { newVal: lower, borrow: 0, formula: null };
+            else return null;
         }
         if (delta >= 1 && delta <= 4) {
-            if (lower >= delta) {
-                return { newVal: upper * 5 + (lower - delta), borrow: 0, formula: null };
-            } else if (upper === 1) {
-                return { newVal: (lower + (5 - delta)), borrow: 0, formula: '-' + delta };
-            } else {
-                return null;
-            }
+            if (lower >= delta) return { newVal: upper * 5 + (lower - delta), borrow: 0, formula: null };
+            else if (upper === 1) return { newVal: (lower + (5 - delta)), borrow: 0, formula: '-' + delta };
+            else return null;
         }
         if (delta >= 6 && delta <= 9) {
             let complement = 10 - delta;
             let add = addOnes(current, complement);
-            if (!add) return null;
-            if (add.carry !== 0) return null;
+            if (!add || add.carry !== 0) return null;
             return { newVal: add.newVal, borrow: 1, formula: '-' + delta };
         }
         return null;
     }
 
-    // --------------------------------------------------------------
-    //  full two‑digit step simulator
-    // --------------------------------------------------------------
     function simulateStep(current, num, op) {
-        let CT = Math.floor(current / 10);
-        let CO = current % 10;
-        let NT = Math.floor(num / 10);
-        let NO = num % 10;
+        let CT = Math.floor(current / 10), CO = current % 10;
+        let NT = Math.floor(num / 10), NO = num % 10;
         let formulas = [];
 
         if (op === '+') {
             let ones = addOnes(CO, NO);
             if (!ones) return null;
             if (ones.formula) formulas.push(ones.formula);
-            let newCO = ones.newVal;
-            let carry = ones.carry;
-
+            let newCO = ones.newVal, carry = ones.carry;
             let tens = addOnes(CT, NT + carry);
-            if (!tens) return null;
-            if (tens.carry !== 0) return null;
+            if (!tens || tens.carry !== 0) return null;
             if (tens.formula) formulas.push(tens.formula);
-            let newCT = tens.newVal;
-            let newValue = newCT * 10 + newCO;
-            if (newValue < 0 || newValue > 99) return null;
-            return { newValue, formulas };
+            let newVal = tens.newVal * 10 + newCO;
+            if (newVal < 0 || newVal > 99) return null;
+            return { newValue: newVal, formulas };
         } else {
             let ones = subtractOnes(CO, NO);
             if (!ones) return null;
             if (ones.formula) formulas.push(ones.formula);
-            let newCO = ones.newVal;
-            let borrow = ones.borrow;
-
+            let newCO = ones.newVal, borrow = ones.borrow;
             let tens = subtractOnes(CT, NT + borrow);
-            if (!tens) return null;
-            if (tens.borrow !== 0) return null;
+            if (!tens || tens.borrow !== 0) return null;
             if (tens.formula) formulas.push(tens.formula);
-            let newCT = tens.newVal;
-            let newValue = newCT * 10 + newCO;
-            if (newValue < 0 || newValue > 99) return null;
-            return { newValue, formulas };
+            let newVal = tens.newVal * 10 + newCO;
+            if (newVal < 0 || newVal > 99) return null;
+            return { newValue: newVal, formulas };
         }
     }
 
-    // --------------------------------------------------------------
-    //  build one problem (6 numbers) that matches selected formula
-    // --------------------------------------------------------------
     function buildProblem(selectedFormula, maxAttempts = 3500) {
         for (let attempt = 0; attempt < maxAttempts; attempt++) {
-            let numbers = [];
-            let ops = [];
-            let current = Math.floor(Math.random() * 85) + 15; // 15-99 safe range
+            let numbers = [], ops = [];
+            let current = Math.floor(Math.random() * 85) + 15;
             numbers.push(current);
-            let usedFormulaInProblem = false;
+            let usedFormula = false;
             let valid = true;
 
             for (let step = 1; step < 6; step++) {
                 let op = Math.random() < 0.5 ? '+' : '-';
                 let num = Math.floor(Math.random() * 85) + 15;
                 let sim = simulateStep(current, num, op);
-                if (!sim) {
-                    valid = false;
-                    break;
-                }
+                if (!sim) { valid = false; break; }
                 let stepFormulas = sim.formulas;
                 if (selectedFormula === 'none') {
-                    if (stepFormulas.length > 0) {
-                        valid = false;
-                        break;
-                    }
+                    if (stepFormulas.length > 0) { valid = false; break; }
                 } else {
-                    for (let f of stepFormulas) {
-                        if (f !== selectedFormula) {
-                            valid = false;
-                            break;
-                        }
-                    }
+                    for (let f of stepFormulas) if (f !== selectedFormula) { valid = false; break; }
                     if (!valid) break;
-                    if (stepFormulas.length > 0) usedFormulaInProblem = true;
+                    if (stepFormulas.length > 0) usedFormula = true;
                 }
                 current = sim.newValue;
                 numbers.push(num);
                 ops.push(op);
             }
-            if (valid) {
-                if (selectedFormula !== 'none' && !usedFormulaInProblem) continue;
-                return { numbers, ops };
-            }
+            if (valid && (selectedFormula === 'none' || usedFormula)) return { numbers, ops };
         }
         return null;
     }
 
-    // --------------------------------------------------------------
-    //  generate 25 problems and render VERTICAL layout (compact)
-    // --------------------------------------------------------------
+    // ==================== RENDER WORKSHEET (SCREEN) ====================
     function renderWorksheet() {
         const select = document.getElementById('formulaSelect');
         const selectedFormula = select.value;
@@ -740,44 +438,31 @@
 
         let problems = [];
         let attempts = 0;
-        const maxTotalAttempts = 10000;
-
-        while (problems.length < 25 && attempts < maxTotalAttempts) {
+        while (problems.length < 25 && attempts < 10000) {
             const prob = buildProblem(selectedFormula);
-            if (prob) {
-                problems.push(prob);
-            }
+            if (prob) problems.push(prob);
             attempts++;
         }
-
-        // robust fallback
         while (problems.length < 25) {
-            problems.push({
-                numbers: [48, 13, 26, 31, 14, 22],
-                ops: ['+', '-', '+', '-', '+']
-            });
+            problems.push({ numbers: [48, 13, 26, 31, 14, 22], ops: ['+', '-', '+', '-', '+'] });
         }
 
         problems.forEach((prob, idx) => {
-            const q = idx + 1;
             const { numbers, ops } = prob;
-
             const card = document.createElement('div');
             card.className = 'question-card';
-
             const qNum = document.createElement('div');
             qNum.className = 'q-num';
-            qNum.textContent = q;
+            qNum.textContent = idx + 1;
 
-            const exprDiv = document.createElement('div');
-            exprDiv.className = 'expression';
-
-            let linesHtml = '';
-            linesHtml += `<div class="expr-line first"><span class="expr-num">${numbers[0]}</span></div>`;
+            let linesHtml = `<div class="expr-line first"><span class="expr-num">${numbers[0]}</span></div>`;
             for (let i = 0; i < ops.length; i++) {
                 linesHtml += `<div class="expr-line"><span class="expr-op">${ops[i]}</span><span class="expr-num">${numbers[i+1]}</span></div>`;
             }
             linesHtml += `<div class="expr-line expr-equal">───</div>`;
+
+            const exprDiv = document.createElement('div');
+            exprDiv.className = 'expression';
             exprDiv.innerHTML = linesHtml;
 
             const answerDiv = document.createElement('div');
@@ -791,21 +476,218 @@
         });
     }
 
+    // ==================== PDF EXPORT: CLEAN SEPARATE WINDOW (NO CORRUPTION) ====================
+    function exportToPDF() {
+        // Get current worksheet problems (same as displayed)
+        const currentCards = document.querySelectorAll('#worksheet .question-card');
+        if (!currentCards.length) return;
+
+        // Build an array of problem data from the visible cards
+        const problemsData = [];
+        for (let card of currentCards) {
+            const lines = card.querySelectorAll('.expr-line');
+            if (lines.length < 2) continue;
+            // Extract numbers and ops
+            let firstNum = null;
+            let ops = [];
+            let numbers = [];
+            for (let line of lines) {
+                if (line.classList.contains('first')) {
+                    const numSpan = line.querySelector('.expr-num');
+                    if (numSpan) firstNum = parseInt(numSpan.textContent, 10);
+                } else if (!line.classList.contains('expr-equal')) {
+                    const opSpan = line.querySelector('.expr-op');
+                    const numSpan = line.querySelector('.expr-num');
+                    if (opSpan && numSpan) {
+                        ops.push(opSpan.textContent);
+                        numbers.push(parseInt(numSpan.textContent, 10));
+                    }
+                }
+            }
+            if (firstNum !== null && numbers.length === ops.length) {
+                problemsData.push({ first: firstNum, ops, numbers });
+            }
+        }
+
+        // Create a new print-optimized document
+        const printWindow = window.open('', '_blank');
+        if (!printWindow) {
+            alert("Please allow pop-ups to export PDF.");
+            return;
+        }
+
+        const doc = printWindow.document;
+        doc.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>Abacus_Worksheet.pdf</title>
+                <style>
+                    * { margin: 0; padding: 0; box-sizing: border-box; }
+                    body {
+                        font-family: 'Segoe UI', 'Courier New', monospace;
+                        background: white;
+                        padding: 0.2in 0.15in;
+                    }
+                    .print-header {
+                        text-align: center;
+                        margin-bottom: 18px;
+                    }
+                    .print-header h1 {
+                        font-size: 1.5rem;
+                        color: #022c40;
+                        letter-spacing: -0.5px;
+                    }
+                    .print-header p {
+                        font-size: 0.75rem;
+                        color: #2c5a77;
+                        border-top: 1px solid #bbb;
+                        display: inline-block;
+                        padding-top: 4px;
+                    }
+                    .worksheet-grid {
+                        display: grid;
+                        grid-template-columns: repeat(5, minmax(92px, 108px));
+                        gap: 8px 5px;
+                        justify-content: center;
+                        margin-top: 12px;
+                    }
+                    .question-card {
+                        border: 1.2px solid #8aaec4;
+                        border-radius: 10px;
+                        padding: 6px 5px 5px;
+                        background: white;
+                        break-inside: avoid;
+                        page-break-inside: avoid;
+                    }
+                    .q-num {
+                        display: inline-block;
+                        background: #f7b05e;
+                        color: white;
+                        font-weight: bold;
+                        width: 24px;
+                        height: 24px;
+                        text-align: center;
+                        line-height: 24px;
+                        border-radius: 30px;
+                        font-size: 0.7rem;
+                        margin-bottom: 6px;
+                        border: 1px solid #e09d42;
+                    }
+                    .expression {
+                        background: #fafeff;
+                        border-radius: 8px;
+                        padding: 6px 4px;
+                        border: 1px solid #b9d0e0;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                    }
+                    .expr-line {
+                        font-size: 0.7rem;
+                        line-height: 1.3;
+                        display: flex;
+                        justify-content: flex-end;
+                        gap: 4px;
+                        font-weight: 600;
+                        color: #013249;
+                    }
+                    .expr-op { width: 1.6ch; text-align: right; }
+                    .expr-num { text-align: right; min-width: 2.6ch; }
+                    .first { font-size: 0.78rem; font-weight: 800; }
+                    .expr-equal {
+                        border-top: 1.2px solid #1f4e6e;
+                        margin-top: 4px;
+                        padding-top: 2px;
+                        font-size: 0.6rem;
+                    }
+                    .answer-line {
+                        margin-top: 7px;
+                        padding-top: 5px;
+                        border-top: 1.8px dashed #b0c7da;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                    .answer-label {
+                        font-size: 0.55rem;
+                        font-weight: bold;
+                        background: #ecf3f8;
+                        padding: 2px 6px;
+                        border-radius: 30px;
+                        border: 1px solid #8dafc7;
+                    }
+                    .blank {
+                        width: 34px;
+                        height: 24px;
+                        border: 2px solid #2a6f8f;
+                        border-radius: 20px;
+                        background: white;
+                    }
+                    .footer {
+                        text-align: center;
+                        margin-top: 20px;
+                        font-size: 0.55rem;
+                        color: #3a6c8f;
+                        border-top: 1px solid #ccc;
+                        padding-top: 10px;
+                    }
+                    @media print {
+                        body { margin: 0; padding: 0.1in; }
+                        .worksheet-grid { gap: 6px 4px; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="print-header">
+                    <h1>🖐️ Abacus • Vertical Sums</h1>
+                    <p>Left hand (tens) · Right hand (ones) · bead‑accurate</p>
+                </div>
+                <div class="worksheet-grid" id="pdfGrid"></div>
+                <div class="footer">⭐ 6-number vertical sums · finger abacus method · level‑1 practice</div>
+                <script>
+                    const problemsData = ${JSON.stringify(problemsData)};
+                    const grid = document.getElementById('pdfGrid');
+                    problemsData.forEach((prob, idx) => {
+                        const card = document.createElement('div');
+                        card.className = 'question-card';
+                        const qNum = document.createElement('div');
+                        qNum.className = 'q-num';
+                        qNum.textContent = idx+1;
+                        let exprHtml = '<div class="expression">';
+                        exprHtml += '<div class="expr-line first"><span class="expr-num">' + prob.first + '</span></div>';
+                        for(let i=0; i<prob.ops.length; i++) {
+                            exprHtml += '<div class="expr-line"><span class="expr-op">' + prob.ops[i] + '</span><span class="expr-num">' + prob.numbers[i] + '</span></div>';
+                        }
+                        exprHtml += '<div class="expr-line expr-equal">───</div></div>';
+                        const answerHtml = '<div class="answer-line"><span class="answer-label">answer</span> <span class="blank"></span></div>';
+                        card.innerHTML = exprHtml + answerHtml;
+                        card.prepend(qNum);
+                        grid.appendChild(card);
+                    });
+                <\/script>
+            </body>
+            </html>
+        `);
+        doc.close();
+
+        // Wait for rendering then trigger print
+        printWindow.onload = () => {
+            setTimeout(() => {
+                printWindow.print();
+                // Optional: close after print (but user might want to keep)
+                // printWindow.onafterprint = () => printWindow.close();
+            }, 300);
+        };
+    }
+
+    // Event binding
+    document.getElementById('generateBtn').addEventListener('click', () => renderWorksheet());
+    document.getElementById('exportPdfBtn').addEventListener('click', () => exportToPDF());
+
+    // Initial render
     renderWorksheet();
-
-    document.getElementById('generateBtn').addEventListener('click', function() {
-        renderWorksheet();
-    });
-
-    // PDF Export: uses print but ensures clean, compact, and fully functional saving.
-    // No corruption - robust print styles and proper margins.
-    document.getElementById('exportPdfBtn').addEventListener('click', function() {
-        // tiny force reflow to ensure latest generated worksheet renders perfectly
-        renderWorksheet();
-        setTimeout(() => {
-            window.print();
-        }, 80);
-    });
 })();
 </script>
 </body>
